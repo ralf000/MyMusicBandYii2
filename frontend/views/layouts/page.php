@@ -18,8 +18,8 @@ $this->beginPage(); ?>
         <div class="fullwidth-block inner-content">
             <div class="container">
 
-                <h2 class="page-title"><?= \yii\helpers\Html::encode($this->title) ?></h2>
                 <div class="row">
+                    <h1 class="page-title"><?= \yii\helpers\Html::encode($this->title) ?></h1>
                     <?= $content ?>
                 </div>
 

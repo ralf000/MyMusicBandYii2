@@ -15,22 +15,14 @@ $this->beginPage(); ?>
 
     <main class="main-content">
 
-        <div class="fullwidth-block inner-content">
+        <div class="fullwidth-block gallery">
             <div class="container">
-                <div class="row">
-                    <div class="col-md-7">
-                        <div class="content">
-
-                            <h1 class="entry-title"><?= \yii\helpers\Html::encode($this->title) ?></h1>
-                            <?= $content ?>
-
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-md-push-1">
-                        <?= $this->render('//parts/sidebar') ?>
+                <div class="content fullwidth">
+                    <h1 class="entry-title"><?= \yii\helpers\Html::encode($this->title) ?></h1>
+                    <div class="row">
+                        <?= $content ?>
                     </div>
                 </div>
-
 
             </div>
         </div>

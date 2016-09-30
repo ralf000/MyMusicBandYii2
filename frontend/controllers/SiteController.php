@@ -18,7 +18,7 @@ use frontend\models\ContactForm;
  */
 class SiteController extends Controller
 {
-    
+
     /**
      * @inheritdoc
      */
@@ -92,6 +92,7 @@ class SiteController extends Controller
         if ($model->load(Yii::$app->request->post()) && $model->login()) {
             return $this->goBack();
         } else {
+            $this->layout = 'page';
             return $this->render('login', [
                 'model' => $model,
             ]);
@@ -119,7 +120,7 @@ class SiteController extends Controller
     {
         $model = new ContactForm();
         if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['adminEmail'])) {
+            if ($model->sendEmail(Yii::$app->params['pressEmail'])) {
                 Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
             } else {
                 Yii::$app->session->setFlash('error', 'There was an error sending email.');
@@ -132,6 +133,35 @@ class SiteController extends Controller
                 'model' => $model,
             ]);
         }
+    }
+
+    /**
+     * Displays gallery page.
+     * @return string
+     */
+    public function actionGallery()
+    {
+        $this->layout = 'gallery';
+        return $this->render('gallery');
+    }
+
+    /**
+     * Displays download page.
+     * @return string
+     */
+    public function actionDownload()
+    {
+        $this->layout = 'page';
+        return $this->render('download');
+    }
+
+    /**
+     * Displays blog page.
+     * @return string
+     */
+    public function actionBlog()
+    {
+        return $this->render('blog');
     }
 
     /**
@@ -160,6 +190,7 @@ class SiteController extends Controller
             }
         }
 
+        $this->layout = 'page';
         return $this->render('signup', [
             'model' => $model,
         ]);

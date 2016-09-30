@@ -10,6 +10,7 @@ $this->title = 'Contact Us';
 ?>
 
 <div class="col-md-6">
+    <?php echo ($f = Yii::$app->session->getAllFlashes()) ? implode('<br>', $f) : false; ?>
     <?php $form = ActiveForm::begin([
         'id' => 'contact-form',
         'options' => ['class' => 'contact-form'],
@@ -22,10 +23,10 @@ $this->title = 'Contact Us';
         ->textInput(['placeholder' => 'Email Address..']) ?>
 
     <?= $form->field($model, 'subject', ['enableLabel' => false])
-        ->textInput(['placeholder' => 'Website...']) ?>
+        ->textInput(['placeholder' => 'Subject']) ?>
 
     <?= $form->field($model, 'body', ['enableLabel' => false])->textarea(['rows' => 6])
-        ->textInput(['placeholder' => 'Message...']) ?>
+        ->textarea(['placeholder' => 'Message...']) ?>
 
     <?= $form->field($model, 'verifyCode', ['enableLabel' => false])->widget(Captcha::className(), [
         'template' => '<div class="row"><div class="col-lg-3">{image}</div><div class="col-lg-9">{input}</div></div>',
