@@ -3,12 +3,12 @@ use yii\helpers\Html;
 use yii\widgets\Menu;
 
 $menuItems = [
-    ['label' => 'Home', 'url' => ['/site/index'], 'linkOptions' => ['class' => 'menu-item']],
-    ['label' => 'About', 'url' => ['/site/about'], 'linkOptions' => ['class' => 'menu-item']],
-    ['label' => 'Gallery', 'url' => ['/site/about'], 'linkOptions' => ['class' => 'menu-item']],
-    ['label' => 'Download', 'url' => ['/site/about'], 'linkOptions' => ['class' => 'menu-item']],
-    ['label' => 'Blog', 'url' => ['/site/about'], 'linkOptions' => ['class' => 'menu-item']],
-    ['label' => 'Contact', 'url' => ['/site/contact'], 'linkOptions' => ['class' => 'menu-item']],
+    ['label' => 'Home', 'url' => ['/site/index']],
+    ['label' => 'About', 'url' => ['/site/about']],
+    ['label' => 'Gallery', 'url' => ['/site/gallery']],
+    ['label' => 'Download', 'url' => ['/site/download']],
+    ['label' => 'Blog', 'url' => ['/site/blog']],
+    ['label' => 'Contact', 'url' => ['/site/contact']],
 ];
 if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];

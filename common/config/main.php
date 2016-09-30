@@ -1,7 +1,7 @@
 <?php
 return [
     'vendorPath' => dirname(dirname(__DIR__)) . '/vendor',
-    'layout' => 'page',
+    'layout' => 'pageWithLeftMenu',
     'components' => [
         'cache' => [
             'class' => 'yii\caching\FileCache',

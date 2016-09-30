@@ -1,6 +1,6 @@
 <footer class="site-footer">
     <div class="container">
-        <img src="dummy/logo-footer.png" alt="Site Name">
+        <img src="/dummy/logo-footer.png" alt="Site Name">
 
         <address>
             <p>495 Brainard St. Detroit, MI 48201 <br><a href="tel:354543543">(563) 429 234 890</a> <br> <a

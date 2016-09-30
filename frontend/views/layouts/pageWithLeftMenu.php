@@ -17,11 +17,20 @@ $this->beginPage(); ?>
 
         <div class="fullwidth-block inner-content">
             <div class="container">
-
-                <h2 class="page-title"><?= \yii\helpers\Html::encode($this->title) ?></h2>
                 <div class="row">
-                    <?= $content ?>
+                    <div class="col-md-7">
+                        <div class="content">
+
+                            <h2 class="entry-title"><?= \yii\helpers\Html::encode($this->title) ?></h2>
+                            <?= $content ?>
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-md-push-1">
+                        <?= $this->render('//parts/sidebar') ?>
+                    </div>
                 </div>
+
 
             </div>
         </div>
