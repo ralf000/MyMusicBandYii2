@@ -1,8 +1,11 @@
 <?php
 namespace frontend\controllers;
 
+use backend\models\Blog;
+use common\helpers\Helper;
 use Yii;
 use yii\base\InvalidParamException;
+use yii\debug\components\search\Filter;
 use yii\web\BadRequestHttpException;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
@@ -12,6 +15,7 @@ use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
 use frontend\models\ContactForm;
+use yii\web\NotFoundHttpException;
 
 /**
  * Site controller
@@ -149,20 +153,12 @@ class SiteController extends Controller
      * Displays download page.
      * @return string
      */
-    public function actionDownload()
+    public function actionDiscography()
     {
         $this->layout = 'page';
-        return $this->render('download');
+        return $this->render('discography');
     }
 
-    /**
-     * Displays blog page.
-     * @return string
-     */
-    public function actionBlog()
-    {
-        return $this->render('blog');
-    }
 
     /**
      * Displays about page.

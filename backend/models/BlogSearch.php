@@ -2,10 +2,10 @@
 
 namespace backend\models;
 
+use common\models\Blog;
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use backend\models\Blog;
 
 /**
  * BlogSearch represents the model behind the search form about `backend\models\Blog`.

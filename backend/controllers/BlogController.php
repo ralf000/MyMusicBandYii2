@@ -3,7 +3,7 @@
 namespace backend\controllers;
 
 use Yii;
-use backend\models\Blog;
+use common\models\Blog;
 use backend\models\BlogSearch;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;

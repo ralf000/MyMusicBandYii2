@@ -6,8 +6,8 @@ $menuItems = [
     ['label' => 'Home', 'url' => ['/site/index']],
     ['label' => 'About', 'url' => ['/site/about']],
     ['label' => 'Gallery', 'url' => ['/site/gallery']],
-    ['label' => 'Download', 'url' => ['/site/download']],
-    ['label' => 'Blog', 'url' => ['/site/blog']],
+    ['label' => 'Discography', 'url' => ['/site/discography']],
+    ['label' => 'Blog', 'url' => ['/blog/index']],
     ['label' => 'Contact', 'url' => ['/site/contact']],
 ];
 if (Yii::$app->user->isGuest) {

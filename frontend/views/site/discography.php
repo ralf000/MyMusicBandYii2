@@ -6,9 +6,9 @@ use yii\helpers\Html;
 
 /* @var $form yii\bootstrap\ActiveForm */
 /* @var $model \frontend\models\ContactForm */
-$this->title = 'Download';
+$this->title = 'Discography';
 ?>
-
+<hr>
 <div class="col-md-5">
     <h2 class="page-title">Our Music</h2>
 
