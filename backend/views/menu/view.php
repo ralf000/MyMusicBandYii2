@@ -31,7 +31,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
             'link',
-//            'type_id',
+            'sort_order',
             [
                 'attribute' => 'Type',
                 'value' => ucfirst($model::getValueFromVocabulary($model->type_id)->value),

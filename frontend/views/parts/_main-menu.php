@@ -1,28 +1,24 @@
 <?php
+use common\helpers\Helper;
+use common\models\Menu as MenuModel;
 use yii\helpers\Html;
 use yii\widgets\Menu;
 
-$menuItems = [
-    ['label' => 'Home', 'url' => ['/site/index']],
-    ['label' => 'About', 'url' => ['/site/about']],
-    ['label' => 'Gallery', 'url' => ['/site/gallery']],
-    ['label' => 'Discography', 'url' => ['/site/discography']],
-    ['label' => 'Blog', 'url' => ['/blog/index']],
-    ['label' => 'Contact', 'url' => ['/site/contact']],
-];
+//$menuItems = [
+//    ['label' => 'Home', 'url' => ['/site/index']],
+//    ['label' => 'About', 'url' => ['/site/about']],
+//    ['label' => 'Gallery', 'url' => ['/site/gallery']],
+//    ['label' => 'Discography', 'url' => ['/site/discography']],
+//    ['label' => 'Blog', 'url' => ['/blog/index']],
+//    ['label' => 'Contact', 'url' => ['/site/contact']],
+//];
+
+$menuItems = MenuModel::handledFromMenuWidget(MenuModel::getMainMenu());
+
 if (Yii::$app->user->isGuest) {
     $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
     $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
 } else {
-//    старый вариант от виджета nav (не работает)
-//    $menuItems[] = '<li>'
-//        . Html::beginForm(['/site/logout'], 'post')
-//        . Html::submitButton(
-//            'Logout (' . Yii::$app->user->identity->username . ')',
-//            ['class' => 'btn btn-link']
-//        )
-//        . Html::endForm()
-//        . '</li>';
     $menuItems[] = [
         'label' => 'Logout',
         'url' => ['site/logout'],

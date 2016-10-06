@@ -13,6 +13,7 @@ use yii\behaviors\TimestampBehavior;
  * @property integer $id
  * @property string $name
  * @property string $link
+ * @property string $sort_order
  * @property integer $type_id
  * @property integer $created_at
  * @property integer $updated_at
@@ -45,8 +46,8 @@ class Menu extends ActiveRecord
     public function rules()
     {
         return [
-            [['name', 'link', 'type_id'], 'required'],
-            [['type_id', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'link', 'sort_order', 'type_id'], 'required'],
+            [['sort_order', 'type_id'], 'integer'],
             [['name'], 'string', 'max' => 30],
             [['link'], 'string', 'max' => 200],
             [['type_id'], 'exist', 'skipOnError' => true, 'targetClass' => Vocabulary::className(), 'targetAttribute' => ['type_id' => 'id']],
@@ -62,6 +63,7 @@ class Menu extends ActiveRecord
             'id' => 'ID',
             'name' => 'Name',
             'link' => 'Link',
+            'sort_order' => 'Sort order',
             'type_id' => 'Type ID',
             'created_at' => 'Created At',
             'updated_at' => 'Updated At',
@@ -88,9 +90,40 @@ class Menu extends ActiveRecord
     public function getDropDownList(array $array): array
     {
         $output = [];
-        foreach ($array as $val){
+        foreach ($array as $val) {
             $output[$val->id] = ucfirst($val->value);
         }
         return $output ?: null;
+    }
+
+    /**
+     * Получить все модели из таблицы menu
+     * @return array|null
+     */
+    public static function getMainMenu() : array
+    {
+        return (new self)->find()->orderBy('sort_order')->all();
+    }
+
+    /**
+     * Получает меню, оформленное для виджета Menu
+     * @param array $menu
+     * @return null
+     */
+    public static function handledFromMenuWidget(array $menu)
+    {
+        $output = [];
+        foreach ($menu as $item) {
+            $output[] = ['label' => $item->name, 'url' => [$item->link]];
+        }
+        return $output ?: null;
+    }
+
+    /**
+     * @return int
+     */
+    public static function getNumMenuItems() : int
+    {
+        return count(self::getMainMenu());
     }
 }

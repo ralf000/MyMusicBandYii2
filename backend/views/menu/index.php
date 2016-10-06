@@ -26,6 +26,7 @@ $this->params['breadcrumbs'][] = $this->title;
 //            'id',
             'name',
             'link',
+            'sort_order',
             [
                 'attribute' => 'type_id',
                 'label' => 'Type',

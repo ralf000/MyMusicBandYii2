@@ -1,5 +1,6 @@
 <?php
 
+use common\models\Menu;
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
 
@@ -16,6 +17,8 @@ use yii\widgets\ActiveForm;
     <?= $form->field($model, 'name')->textInput(['maxlength' => true]) ?>
 
     <?= $form->field($model, 'link')->textInput(['maxlength' => true]) ?>
+    
+    <?= $form->field($model, 'sort_order')->dropDownList(range(0, Menu::getNumMenuItems())); ?>
 
     <?= $form->field($model, 'type_id')->dropDownList($menuTypes, ['options' => [key($menuTypes) => ['Selected'=>'selected']]]); ?>
 

@@ -2,6 +2,7 @@
 
 namespace common\helpers;
 
+use common\models\Menu;
 use Reflection;
 use ReflectionClass;
 use Yii;
