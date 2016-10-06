@@ -32,6 +32,15 @@
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     [
+                        'label' => 'Menu',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Create menu item', 'icon' => 'fa fa-file-code-o', 'url' => ['menu/create'],],
+                            ['label' => 'Menu items', 'icon' => 'fa fa-dashboard', 'url' => ['menu/index'],],
+                        ]
+                    ],
+                    [
                         'label' => 'Blog',
                         'icon' => 'fa fa-share',
                         'url' => '#',
