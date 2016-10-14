@@ -2,6 +2,7 @@
 
 namespace common\models;
 
+use common\helpers\Helper;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
@@ -49,7 +50,7 @@ class Blog extends ActiveRecord
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['title'], 'string', 'max' => 100],
             [['description'], 'string', 'max' => 200],
-            [['thumbnail'], 'string', 'max' => 255],
+            [['thumbnail'], 'filter', 'filter' => 'strip_tags'],
             [['title'], 'unique'],
         ];
     }

@@ -34,8 +34,8 @@ class BlogController extends Controller
     {
         $model = new Blog();
         $id = Yii::$app->request->get('id');
-        $article = $model->findOne(['id' => $id]);
-        if (!($id || $article))
+        $article = $model->findOne(['id' => $id, 'status' => '1']);
+        if (!($id and $article))
             throw new NotFoundHttpException('Неверный id записи');
         return $this->render('article', [
             'article' => $article

@@ -41,6 +41,17 @@
                         ]
                     ],
                     [
+                        'label' => 'Gallery',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Create gallery', 'icon' => 'fa fa-file-code-o', 'url' => ['gallery/create'],],
+                            ['label' => 'Add image', 'icon' => 'fa fa-file-code-o', 'url' => ['gallery-images/create'],],
+                            ['label' => 'Galleries', 'icon' => 'fa fa-dashboard', 'url' => ['gallery/index'],],
+                            ['label' => 'Images', 'icon' => 'fa fa-dashboard', 'url' => ['gallery-images/index'],],
+                        ]
+                    ],
+                    [
                         'label' => 'Blog',
                         'icon' => 'fa fa-share',
                         'url' => '#',

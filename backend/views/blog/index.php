@@ -5,6 +5,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $model \common\models\Blog */
 /* @var $searchModel backend\models\BlogSearch */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
@@ -25,7 +26,6 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'title',
 //            'description',
 //            'thumbnail',
@@ -36,7 +36,14 @@ $this->params['breadcrumbs'][] = $this->title;
                     return '<img style="width: 100px" src="' . Helper::getHost() . $data->thumbnail . '">';
                 },
             ],
-            'status',
+            [
+                'attribute' => 'status',
+                'label' => 'Status',
+                'content' => function ($data) {
+                    return ($data) ? 'Published' : 'Unpublished';
+                }
+            ],
+//            'status',
             [
                 'attribute' => 'created_at',
                 'value' => $model->created_at,

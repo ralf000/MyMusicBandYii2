@@ -20,7 +20,8 @@
         "yiisoft/yii2-swiftmailer": "*",
         "dmstr/yii2-adminlte-asset": "2.3.3",
         "mihaildev/yii2-ckeditor": "1.0.1",
-        "xvs32x/tinymce-responsivefilemanager": "1.0.13"
+        "xvs32x/tinymce-responsivefilemanager": "1.0.13",
+        "newerton/yii2-fancybox": "dev-master"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
