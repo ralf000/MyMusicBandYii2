@@ -52,6 +52,15 @@
                         ]
                     ],
                     [
+                        'label' => 'Pages',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Create page', 'icon' => 'fa fa-file-code-o', 'url' => ['page/create'],],
+                            ['label' => 'Pages', 'icon' => 'fa fa-dashboard', 'url' => ['page/index'],],
+                        ]
+                    ],
+                    [
                         'label' => 'Blog',
                         'icon' => 'fa fa-share',
                         'url' => '#',

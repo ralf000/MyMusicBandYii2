@@ -10,7 +10,7 @@ use Yii;
 class Helper
 {
     public static function getHost(){
-        return 'http://' . end(explode('.', Yii::$app->request->hostInfo));
+        return (str_replace('admin.', '', Yii::$app->request->hostInfo));
     }
 
     public static function g($var) {

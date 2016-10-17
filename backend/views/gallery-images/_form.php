@@ -20,8 +20,6 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'gallery_name_id')->dropDownList($galleries)->label('Gallery') ?>
 
-    <!--        --><? //= $form->field($model, 'tag')->textInput(['maxlength' => true]) ?>
-
     <?= $form->field($model, 'tag', ['template' => "{label}\n<div class=\"input-group\"><span class=\"input-group-btn\"><a class=\"btn btn-default fancybox.iframe\" id=\"add-tag\" href=\"#\" type=\"button\"><span class=\"glyphicon glyphicon-plus\"></span></a></span>{input}\n</div>\n{hint}\n{error}"])->dropDownList($tags); ?>
 
     <div class="form-group">
