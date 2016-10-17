@@ -19,6 +19,11 @@ use yii\db\ActiveRecord;
  */
 class Gallery extends ActiveRecord
 {
+
+    /* @property array GalleryImages models */
+    public $images = [];
+    public $thumbnail = '';
+    
     /**
      * @inheritdoc
      */
@@ -46,6 +51,7 @@ class Gallery extends ActiveRecord
             [['name'], 'required'],
             [['status', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 200],
+            [['thumbnail', 'images'], 'safe']
         ];
     }
 

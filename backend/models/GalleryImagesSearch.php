@@ -39,7 +39,7 @@ class GalleryImagesSearch extends GalleryImages
      */
     public function search($params)
     {
-        $query = GalleryImages::find();
+        $query = GalleryImages::find()->orderBy('id DESC');
 
         // add conditions that should always apply here
 

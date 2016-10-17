@@ -5,6 +5,7 @@ namespace common\models;
 use Yii;
 use yii\behaviors\TimestampBehavior;
 use yii\db\ActiveRecord;
+use yii\db\Query;
 
 /**
  * This is the model class for table "gallery_images".
@@ -66,7 +67,7 @@ class GalleryImages extends ActiveRecord
             'tag' => 'Tag',
         ];
     }
-    
+
     public function setAttributes($values, $safeOnly = true)
     {
         parent::setAttributes($values, $safeOnly);
@@ -81,9 +82,23 @@ class GalleryImages extends ActiveRecord
     {
         return $this->hasOne(Gallery::className(), ['id' => 'gallery_name_id']);
     }
+
+    /**
+     * @param int $id
+     * @return string|null
+     */
     public static function getGalleryNameById(int $id)
     {
         return Gallery::findOne(['id' => $id]) ? Gallery::findOne(['id' => $id])['name'] : null;
     }
-    
+
+    /**
+     * @param int $id
+     * @return array|bool
+     */
+    public static function getTagsByGalleryId(int $id)
+    {
+        return GalleryImages::find()->select('tag')->where(['gallery_name_id' => $id])->distinct()->all() ?: false;
+    }
+
 }
