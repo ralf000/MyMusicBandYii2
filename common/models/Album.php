@@ -2,22 +2,31 @@
 
 namespace common\models;
 
+use common\helpers\Helper;
 use Yii;
+use yii\behaviors\TimestampBehavior;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "albums".
  *
  * @property integer $id
  * @property string $name
+ * @property string $year
  * @property string $thumbnail
  * @property integer $status
  * @property integer $created_at
  * @property integer $updated_at
  *
- * @property Songs[] $songs
+ * @property Song[] $songs
  */
-class Album extends \yii\db\ActiveRecord
+class Album extends ActiveRecord
 {
+
+    /**
+     * @var array Song models
+     */
+    public $songs = [];
     /**
      * @inheritdoc
      */
@@ -29,13 +38,26 @@ class Album extends \yii\db\ActiveRecord
     /**
      * @inheritdoc
      */
+    public function behaviors()
+    {
+        return [
+            TimestampBehavior::className(),
+        ];
+    }
+
+    /**
+     * @inheritdoc
+     */
     public function rules()
     {
         return [
-            [['name', 'thumbnail', 'created_at', 'updated_at'], 'required'],
-            [['status', 'created_at', 'updated_at'], 'integer'],
+            [['name', 'year', 'thumbnail'], 'required'],
+            [['status', 'year', 'created_at', 'updated_at'], 'integer'],
             [['name'], 'string', 'max' => 200],
             [['thumbnail'], 'string', 'max' => 255],
+            ['thumbnail', 'filter', 'filter' => function ($value) {
+                return str_replace(Helper::getHost(), '', $value);
+            }],
         ];
     }
 
@@ -47,6 +69,7 @@ class Album extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'name' => 'Name',
+            'year' => 'Year',
             'thumbnail' => 'Thumbnail',
             'status' => 'Status',
             'created_at' => 'Created At',
@@ -59,6 +82,6 @@ class Album extends \yii\db\ActiveRecord
      */
     public function getSongs()
     {
-        return $this->hasMany(Songs::className(), ['album_id' => 'id']);
+        return $this->hasMany(Song::className(), ['album_id' => 'id']);
     }
 }

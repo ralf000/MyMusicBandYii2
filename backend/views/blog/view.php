@@ -38,8 +38,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->thumbnail ? Helper::getHost() . $model->thumbnail : '',
                 'format' => ['image', ['width' => '300']]
             ],
-//            'thumbnail',
-//            'status',
             [
                 'attribute' => 'status',
                 'value' => ($model->status == 1) ? 'Published' : 'Unpublished',
@@ -54,8 +52,6 @@ $this->params['breadcrumbs'][] = $this->title;
                 'value' => $model->updated_at,
                 'format' => ['date', 'H:i:s dd-MM-Y'],
             ],
-//            'created_at',
-//            'updated_at',
         ],
     ]) ?>
 

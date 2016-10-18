@@ -9,8 +9,10 @@
 namespace frontend\controllers;
 
 
+use common\models\Album;
 use common\models\Blog;
 use common\models\Page;
+use common\models\Song;
 use frontend\models\ContactForm;
 use tests\codeception\frontend\_pages\AboutPage;
 use Yii;
@@ -36,6 +38,14 @@ class PageController extends Controller
         ]);
     }
 
+    public function actionDiscography()
+    {
+        $this->layout = 'page';
+        return $this->render('discography', [
+            'albums' => $this->setSongs(Album::findAll(['status' => 1]))
+        ]);
+    }
+
     public function actionContacts()
     {
         $model = new ContactForm();
@@ -54,5 +64,14 @@ class PageController extends Controller
                 'page' => Page::findOne(['id' => 2]) ?: false
             ]);
         }
+    }
+
+    private function setSongs(array $albums)
+    {
+        foreach ($albums as $album) {
+            /* @var $album Album */
+            $album->songs = Song::findAll(['album_id' => $album->id, 'status' => 1]);
+        }
+        return $albums;
     }
 }

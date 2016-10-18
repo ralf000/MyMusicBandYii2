@@ -2,6 +2,7 @@
 
 namespace backend\controllers;
 
+use common\models\Album;
 use Yii;
 use common\models\Song;
 use backend\models\SongSearch;
@@ -70,6 +71,7 @@ class SongController extends Controller
         } else {
             return $this->render('create', [
                 'model' => $model,
+                'albums' => $this->getAlbums()
             ]);
         }
     }
@@ -89,6 +91,7 @@ class SongController extends Controller
         } else {
             return $this->render('update', [
                 'model' => $model,
+                'albums' => $this->getAlbums()
             ]);
         }
     }
@@ -121,4 +124,15 @@ class SongController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
+    protected function getAlbums()
+    {
+        $output = [];
+        foreach (Album::findAll(['status' => 1]) as $gallery) {
+            /* @var $gallery Album */
+            $output[$gallery->id] = $gallery->name;
+        }
+        return $output ?: [];
+    }
+    
 }

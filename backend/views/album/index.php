@@ -1,5 +1,6 @@
 <?php
 
+use common\helpers\Helper;
 use yii\helpers\Html;
 use yii\grid\GridView;
 
@@ -21,12 +22,31 @@ $this->params['breadcrumbs'][] = $this->title;
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
-            'id',
             'name',
-            'thumbnail',
-            'status',
-            'created_at',
-            // 'updated_at',
+            [
+                'attribute' => 'thumbnail',
+                'label' => 'Image',
+                'content' => function ($data) {
+                    return $data->thumbnail ? '<img style="width: 100px" src="' . Helper::getHost() . $data->thumbnail . '">' : null;
+                },
+            ],
+            [
+                'attribute' => 'status',
+                'label' => 'Status',
+                'content' => function ($data) {
+                    return ($data) ? 'Published' : 'Unpublished';
+                }
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => $model->created_at,
+                'format' => ['date', 'H:i:s dd-MM-Y'],
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => $model->updated_at,
+                'format' => ['date', 'H:i:s dd-MM-Y'],
+            ],
 
             ['class' => 'yii\grid\ActionColumn'],
         ],

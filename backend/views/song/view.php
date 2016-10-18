@@ -31,8 +31,15 @@ $this->params['breadcrumbs'][] = $this->title;
             'id',
             'name',
             'link',
-            'status',
-            'album_id',
+            [
+                'attribute' => 'status',
+                'value' => ($model->status == 1) ? 'Published' : 'Unpublished',
+            ],
+            [
+                'label' => 'Album',
+                'attribute' => 'album_id',
+                'value' => \common\models\Album::findOne(['id' => $model->album_id])->name
+            ],
         ],
     ]) ?>
 

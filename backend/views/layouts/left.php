@@ -69,6 +69,17 @@
                             ['label' => 'Articles', 'icon' => 'fa fa-dashboard', 'url' => ['blog/index'],],
                         ]
                     ],
+                    [
+                        'label' => 'Discography',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Create album', 'icon' => 'fa fa-file-code-o', 'url' => ['album/create'],],
+                            ['label' => 'Add song', 'icon' => 'fa fa-file-code-o', 'url' => ['song/create'],],
+                            ['label' => 'Albums', 'icon' => 'fa fa-dashboard', 'url' => ['album/index'],],
+                            ['label' => 'Songs', 'icon' => 'fa fa-dashboard', 'url' => ['song/index'],],
+                        ]
+                    ],
 
                     ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
                     ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],

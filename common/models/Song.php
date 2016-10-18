@@ -2,7 +2,9 @@
 
 namespace common\models;
 
+use common\helpers\Helper;
 use Yii;
+use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "songs".
@@ -13,9 +15,9 @@ use Yii;
  * @property integer $status
  * @property integer $album_id
  *
- * @property Albums $album
+ * @property Album $album
  */
-class Song extends \yii\db\ActiveRecord
+class Song extends ActiveRecord
 {
     /**
      * @inheritdoc
@@ -35,6 +37,9 @@ class Song extends \yii\db\ActiveRecord
             [['status', 'album_id'], 'integer'],
             [['name'], 'string', 'max' => 200],
             [['link'], 'string', 'max' => 300],
+            ['link', 'filter', 'filter' => function ($value) {
+                return str_replace(Helper::getHost(), '', $value);
+            }],
             [['album_id'], 'exist', 'skipOnError' => true, 'targetClass' => Album::className(), 'targetAttribute' => ['album_id' => 'id']],
         ];
     }

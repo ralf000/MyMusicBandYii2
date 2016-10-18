@@ -2698,4 +2698,11 @@ body {
 #contact-form p.help-block {
   margin: 0;
 }
+.cover, .album audio{
+  width: 100%;
+  padding-bottom: 10px;
+}
+.cover:hover{
+  cursor: pointer;
+}
 /*//================My===============================*/

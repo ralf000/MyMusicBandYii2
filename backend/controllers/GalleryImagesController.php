@@ -130,7 +130,7 @@ class GalleryImagesController extends Controller
     protected function getGalleries()
     {
         $output = [];
-        foreach (Gallery::find()->all() as $gallery) {
+        foreach (Gallery::find()->where(['status' => 1])->all() as $gallery) {
             /* @var $gallery Gallery */
             $output[$gallery->id] = $gallery->name;
         }

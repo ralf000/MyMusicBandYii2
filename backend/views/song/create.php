@@ -5,6 +5,7 @@ use yii\helpers\Html;
 
 /* @var $this yii\web\View */
 /* @var $model common\models\Song */
+/* @var $albums array */
 
 $this->title = 'Create Song';
 $this->params['breadcrumbs'][] = ['label' => 'Songs', 'url' => ['index']];
@@ -16,6 +17,7 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= $this->render('_form', [
         'model' => $model,
+        'albums' => $albums
     ]) ?>
 
 </div>

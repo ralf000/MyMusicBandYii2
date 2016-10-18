@@ -1,5 +1,6 @@
 <?php
 
+use common\helpers\Helper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
@@ -30,10 +31,26 @@ $this->params['breadcrumbs'][] = $this->title;
         'attributes' => [
             'id',
             'name',
-            'thumbnail',
-            'status',
-            'created_at',
-            'updated_at',
+            [
+                'attribute' => 'thumbnail',
+                'value' => $model->thumbnail ? Helper::getHost() . $model->thumbnail : '',
+                'format' => ['image', ['width' => '300']]
+            ],
+            'year',
+            [
+                'attribute' => 'status',
+                'value' => ($model->status == 1) ? 'Published' : 'Unpublished',
+            ],
+            [
+                'attribute' => 'created_at',
+                'value' => $model->created_at,
+                'format' => ['date', 'H:i:s dd-MM-Y'],
+            ],
+            [
+                'attribute' => 'updated_at',
+                'value' => $model->updated_at,
+                'format' => ['date', 'H:i:s dd-MM-Y'],
+            ],
         ],
     ]) ?>
 
