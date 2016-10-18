@@ -1,44 +1,24 @@
-<div class="fullwidth-block why-chooseus-section">
-    <div class="container">
-        <h2 class="section-title">Why choose us?</h2>
+<? $pages = \common\models\Page::findAll([3, 4, 5]); ?>
+<? if ($pages && is_array($pages)): ?>
+    <div class="fullwidth-block why-chooseus-section">
+        <div class="container">
+            <h2 class="section-title">Information</h2>
 
-        <div class="row">
-            <div class="col-md-4">
-                <div class="feature">
-                    <figure class="cut-corner">
-                        <img src="dummy/medium-image-1.jpg" alt="">
-                    </figure>
-                    <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi
-                        laborum dolorum</h3>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                        occaecati cupiditate non provident.</p>
-                </div> <!-- .feature -->
+            <div class="row">
+                <? foreach ($pages as $page): ?>
+                    <? /** @var $page \common\models\Page */ ?>
+                    <div class="col-md-4">
+                        <div class="feature">
+                            <h2 class="feature-title"><?= $page->title ?></h2>
+                            <figure class="cut-corner">
+                                <img src="<?= $page->thumbnail ?>" alt="">
+                            </figure>
+                            <h3 class="feature-title"><?= $page->description ?></h3>
+                            <?= $page->content ?>
+                        </div> <!-- .feature -->
+                    </div>
+                <? endforeach; ?>
             </div>
-            <div class="col-md-4">
-                <div class="feature">
-                    <figure class="cut-corner">
-                        <img src="dummy/medium-image-2.jpg" alt="">
-                    </figure>
-                    <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi
-                        laborum dolorum</h3>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                        occaecati cupiditate non provident.</p>
-                </div> <!-- .feature -->
-            </div>
-            <div class="col-md-4">
-                <div class="feature">
-                    <figure class="cut-corner">
-                        <img src="dummy/medium-image-3.jpg" alt="">
-                    </figure>
-                    <h3 class="feature-title">Similique sunt in culpa qui officia deserunt mollitia animi
-                        laborum dolorum</h3>
-                    <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium
-                        voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi sint
-                        occaecati cupiditate non provident.</p>
-                </div> <!-- .feature -->
-            </div>
-        </div>
-    </div> <!-- .container -->
-</div> <!-- .why-chooseus-section -->
+        </div> <!-- .container -->
+    </div> <!-- .why-chooseus-section -->
+<? endif; ?>

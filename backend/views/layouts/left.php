@@ -32,6 +32,17 @@
                 'items' => [
                     ['label' => 'Menu Yii2', 'options' => ['class' => 'header']],
                     [
+                        'label' => 'Home Page',
+                        'icon' => 'fa fa-share',
+                        'url' => '#',
+                        'items' => [
+                            ['label' => 'Create slide', 'icon' => 'fa fa-file-code-o', 'url' => ['slide/create'],],
+                            ['label' => 'Slider', 'icon' => 'fa fa-dashboard', 'url' => ['slide/index'],],
+                            ['label' => 'Create quote', 'icon' => 'fa fa-dashboard', 'url' => ['quote/create'],],
+                            ['label' => 'Quotes', 'icon' => 'fa fa-dashboard', 'url' => ['quote/index'],],
+                        ]
+                    ],
+                    [
                         'label' => 'Menu',
                         'icon' => 'fa fa-share',
                         'url' => '#',
@@ -80,36 +91,36 @@
                             ['label' => 'Songs', 'icon' => 'fa fa-dashboard', 'url' => ['song/index'],],
                         ]
                     ],
-
-                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
-                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
-                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
-                    [
-                        'label' => 'Same tools',
-                        'icon' => 'fa fa-share',
-                        'url' => '#',
-                        'items' => [
-                            ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
-                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
-                            [
-                                'label' => 'Level One',
-                                'icon' => 'fa fa-circle-o',
-                                'url' => '#',
-                                'items' => [
-                                    ['label' => 'Level Two', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                    [
-                                        'label' => 'Level Two',
-                                        'icon' => 'fa fa-circle-o',
-                                        'url' => '#',
-                                        'items' => [
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
-                                        ],
-                                    ],
-                                ],
-                            ],
-                        ],
-                    ],
+//
+//                    ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii']],
+//                    ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug']],
+//                    ['label' => 'Login', 'url' => ['site/login'], 'visible' => Yii::$app->user->isGuest],
+//                    [
+//                        'label' => 'Same tools',
+//                        'icon' => 'fa fa-share',
+//                        'url' => '#',
+//                        'items' => [
+//                            ['label' => 'Gii', 'icon' => 'fa fa-file-code-o', 'url' => ['/gii'],],
+//                            ['label' => 'Debug', 'icon' => 'fa fa-dashboard', 'url' => ['/debug'],],
+//                            [
+//                                'label' => 'Level One',
+//                                'icon' => 'fa fa-circle-o',
+//                                'url' => '#',
+//                                'items' => [
+//                                    ['label' => 'Level Two', 'icon' => 'fa fa-circle-o', 'url' => '#',],
+//                                    [
+//                                        'label' => 'Level Two',
+//                                        'icon' => 'fa fa-circle-o',
+//                                        'url' => '#',
+//                                        'items' => [
+//                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
+//                                            ['label' => 'Level Three', 'icon' => 'fa fa-circle-o', 'url' => '#',],
+//                                        ],
+//                                    ],
+//                                ],
+//                            ],
+//                        ],
+//                    ],
                 ],
             ]
         ) ?>

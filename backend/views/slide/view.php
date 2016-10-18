@@ -1,16 +1,17 @@
 <?php
 
+use common\helpers\Helper;
 use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Gallery */
+/* @var $model common\models\Slide */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Galleries', 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Slides', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="gallery-view">
+<div class="slide-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +30,19 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'title',
+            'description:ntext',
+            'content:ntext',
+            [
+                'attribute' => 'link',
+                'value' => '<a href="' . $model->link . '">' . $model->link . '</a>',
+                'format' => 'html'
+            ],
+            [
+                'attribute' => 'thumbnail',
+                'value' => $model->thumbnail ? Helper::getHost() . $model->thumbnail : '',
+                'format' => ['image', ['width' => '300']]
+            ],
             [
                 'attribute' => 'status',
                 'value' => ($model->status == 1) ? 'Published' : 'Unpublished',

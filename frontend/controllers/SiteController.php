@@ -3,6 +3,8 @@ namespace frontend\controllers;
 
 use backend\models\Blog;
 use common\helpers\Helper;
+use common\models\Quote;
+use common\models\Slide;
 use Yii;
 use yii\base\InvalidParamException;
 use yii\debug\components\search\Filter;
@@ -78,7 +80,10 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'front';
-        return $this->render('index');
+        return $this->render('index', [
+            'slider' => Slide::findAll(['status' => 1]),
+            'quotes' => Quote::findAll(['status' => 1]),
+        ]);
     }
 
     /**
@@ -115,60 +120,6 @@ class SiteController extends Controller
         return $this->goHome();
     }
 
-    /**
-     * Displays contact page.
-     *
-     * @return mixed
-     */
-    public function actionContact()
-    {
-        $model = new ContactForm();
-        if ($model->load(Yii::$app->request->post()) && $model->validate()) {
-            if ($model->sendEmail(Yii::$app->params['pressEmail'])) {
-                Yii::$app->session->setFlash('success', 'Thank you for contacting us. We will respond to you as soon as possible.');
-            } else {
-                Yii::$app->session->setFlash('error', 'There was an error sending email.');
-            }
-
-            return $this->refresh();
-        } else {
-            $this->layout = 'page';
-            return $this->render('contact', [
-                'model' => $model,
-            ]);
-        }
-    }
-
-    /**
-     * Displays gallery page.
-     * @return string
-     */
-    public function actionGallery()
-    {
-        $this->layout = 'gallery';
-        return $this->render('gallery');
-    }
-
-    /**
-     * Displays download page.
-     * @return string
-     */
-    public function actionDiscography()
-    {
-        $this->layout = 'page';
-        return $this->render('discography');
-    }
-
-
-    /**
-     * Displays about page.
-     *
-     * @return mixed
-     */
-    public function actionAbout()
-    {
-        return $this->render('about');
-    }
 
     /**
      * Signs user up.

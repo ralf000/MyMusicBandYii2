@@ -45,10 +45,11 @@ echo FancyBox::widget([
 <script>
     function addImage() {
         var ths = $('#galleryimages-image');
+        var host = location.protocol + '//' + location.host.split('.')[1];
         if (ths.val().search(/(.jpe?g)|(.gif)|(.png)/i) != -1) {
             $('#files').remove();
             ths.closest('.form-group')
-                .append('<div id="files" class="files"><img style="width: 20%; padding: 7px;" src="' + ths.val() + '" alt="" /></div>');
+                .append('<div id="files" class="files"><img style="width: 20%; padding: 7px;" src="' + host + ths.val() + '" alt="" /></div>');
         }
     }
     function responsive_filemanager_callback(ths) {
@@ -56,6 +57,7 @@ echo FancyBox::widget([
     }
 
     $(function () {
+        addImage();
         $('#add-tag').on('click', function (e) {
             e.preventDefault();
             var result = prompt('Введите новый тег');

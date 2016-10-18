@@ -2705,4 +2705,8 @@ body {
 .cover:hover{
   cursor: pointer;
 }
+.slider .container p {
+  text-shadow: white 1px 0px, white 1px 1px, white 0px 1px, white -1px 1px, white -1px 0px, white -1px -1px, white 0px -1px, white 1px -1px;
+  color: black;
+}
 /*//================My===============================*/

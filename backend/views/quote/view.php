@@ -4,13 +4,13 @@ use yii\helpers\Html;
 use yii\widgets\DetailView;
 
 /* @var $this yii\web\View */
-/* @var $model common\models\Gallery */
+/* @var $model common\models\Quote */
 
-$this->title = $model->name;
-$this->params['breadcrumbs'][] = ['label' => 'Galleries', 'url' => ['index']];
+$this->title = $model->title;
+$this->params['breadcrumbs'][] = ['label' => 'Quotes', 'url' => ['index']];
 $this->params['breadcrumbs'][] = $this->title;
 ?>
-<div class="gallery-view">
+<div class="quote-view">
 
     <h1><?= Html::encode($this->title) ?></h1>
 
@@ -29,7 +29,9 @@ $this->params['breadcrumbs'][] = $this->title;
         'model' => $model,
         'attributes' => [
             'id',
-            'name',
+            'title',
+            'description:ntext',
+            'content:ntext',
             [
                 'attribute' => 'status',
                 'value' => ($model->status == 1) ? 'Published' : 'Unpublished',

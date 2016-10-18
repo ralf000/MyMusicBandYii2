@@ -1,29 +1,21 @@
-<div class="fullwidth-block testimonial-section">
-    <div class="container">
-        <div class="quote-slider">
-            <ul class="slides">
-                <li>
-                    <blockquote>
-                        <p>"Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
-                            doloremque laudantium totam rem aperiam eaque ipsa quae ab illo inventore
-                            veritatis
-                            et quasi architecto beatae vitae dicta sunt explicabo"</p>
-                        <cite>John Smith</cite>
-                        <span>Corporation CEO, books author</span>
-                    </blockquote>
-                </li>
-                <li>
-                    <blockquote>
-                        <p>"Iste natus error sit voluptatem accusantium doloremque laudantium totam rem
-                            aperiam
-                            eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae
-                            dicta
-                            sunt explicabo"</p>
-                        <cite>John Smith</cite>
-                        <span>Corporation CEO, books author</span>
-                    </blockquote>
-                </li>
-            </ul>
+<? $quotes = \common\models\Quote::findAll(['status' => 1]); ?>
+<? if ($quotes && is_array($quotes)): ?>
+    <div class="fullwidth-block testimonial-section">
+        <div class="container">
+            <div class="quote-slider">
+                <ul class="slides">
+                    <? foreach ($quotes as $quote): ?>
+                        <? /** @var $quote \common\models\Quote */ ?>
+                        <li>
+                            <blockquote>
+                                <p><?= $quote->content ?></p>
+                                <cite><?= $quote->title ?></cite>
+                                <span><?= $quote->description ?></span>
+                            </blockquote>
+                        </li>
+                    <? endforeach; ?>
+                </ul>
+            </div>
         </div>
-    </div>
-</div> <!-- .testimonial-section -->
+    </div> <!-- .testimonial-section -->
+<? endif; ?>
