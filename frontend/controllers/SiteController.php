@@ -1,23 +1,18 @@
 <?php
 namespace frontend\controllers;
 
-use backend\models\Blog;
-use common\helpers\Helper;
+use common\models\LoginForm;
 use common\models\Quote;
 use common\models\Slide;
-use Yii;
-use yii\base\InvalidParamException;
-use yii\debug\components\search\Filter;
-use yii\web\BadRequestHttpException;
-use yii\web\Controller;
-use yii\filters\VerbFilter;
-use yii\filters\AccessControl;
-use common\models\LoginForm;
 use frontend\models\PasswordResetRequestForm;
 use frontend\models\ResetPasswordForm;
 use frontend\models\SignupForm;
-use frontend\models\ContactForm;
-use yii\web\NotFoundHttpException;
+use Yii;
+use yii\base\InvalidParamException;
+use yii\filters\AccessControl;
+use yii\filters\VerbFilter;
+use yii\web\BadRequestHttpException;
+use yii\web\Controller;
 
 /**
  * Site controller
@@ -80,10 +75,7 @@ class SiteController extends Controller
     public function actionIndex()
     {
         $this->layout = 'front';
-        return $this->render('index', [
-            'slider' => Slide::findAll(['status' => 1]),
-            'quotes' => Quote::findAll(['status' => 1]),
-        ]);
+        return $this->render('index');
     }
 
     /**
