@@ -84,4 +84,8 @@ class Album extends ActiveRecord
     {
         return $this->hasMany(Song::className(), ['album_id' => 'id']);
     }
+
+    public function getNumberTracks(){
+        return count(Song::findAll(['album_id' => $this->id, 'status' => 1]));
+    }
 }
